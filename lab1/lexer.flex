@@ -35,13 +35,13 @@
 "else"                  {if(USE_LEX_ONLY) {printf("ELSE ");} else {return yy::parser::make_ELSE(yytext);}}
 "true"                  {if(USE_LEX_ONLY) {printf("TRUE ");} else {return yy::parser::make_TRUE(yytext);}}
 "false"                 {if(USE_LEX_ONLY) {printf("FALSE ");} else {return yy::parser::make_FALSE(yytext);}}
-"this"                  {if(USE_LEX_ONLY) {printf("THIS ");} {return yy::parser::make_THIS(yytext);}}
-"new"                   {if(USE_LEX_ONLY) {printf("NEW ");} {return yy::parser::make_NEW(yytext);}}
-"class"                 {if(USE_LEX_ONLY) {printf("CLASS ");} {return yy::parser::make_CLASS(yytext);}}
-"public"                {if(USE_LEX_ONLY) {printf("PUBLIC ");} {return yy::parser::make_PUBLIC(yytext);}}
-"private"               {if(USE_LEX_ONLY) {printf("PRIVATE ");} {return yy::parser::make_PRIVATE(yytext);}}
-"static"                {if(USE_LEX_ONLY) {printf("STATIC ");} {return yy::parser::make_STATIC(yytext);}}
-"void"                  {if(USE_LEX_ONLY) {printf("VOID ");} {return yy::parser::make_VOID(yytext);}}
+"this"                  {if(USE_LEX_ONLY) {printf("THIS ");} else {return yy::parser::make_THIS(yytext);}}
+"new"                   {if(USE_LEX_ONLY) {printf("NEW ");} else {return yy::parser::make_NEW(yytext);}}
+"class"                 {if(USE_LEX_ONLY) {printf("CLASS ");} else {return yy::parser::make_CLASS(yytext);}}
+"public"                {if(USE_LEX_ONLY) {printf("PUBLIC ");} else {return yy::parser::make_PUBLIC(yytext);}}
+"private"               {if(USE_LEX_ONLY) {printf("PRIVATE ");} else {return yy::parser::make_PRIVATE(yytext);}}
+"static"                {if(USE_LEX_ONLY) {printf("STATIC ");} else {return yy::parser::make_STATIC(yytext);}}
+"void"                  {if(USE_LEX_ONLY) {printf("VOID ");} else {return yy::parser::make_VOID(yytext);}}
 "int"                   {if(USE_LEX_ONLY) {printf("TYPEINT ");} else {return yy::parser::make_TYPEINT(yytext);}}
 "boolean"               {if(USE_LEX_ONLY) {printf("BOOLEAN ");} else {return yy::parser::make_PUBLIC(yytext);}}
 "String"                {if(USE_LEX_ONLY) {printf("STRINGTYPE ");} else {return yy::parser::make_STRINGTYPE(yytext);}}
