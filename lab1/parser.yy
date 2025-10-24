@@ -45,8 +45,7 @@ goal: mainClass END {
 }
 
 mainClass: PUBLIC CLASS identifier LCB PUBLIC STATIC VOID MAIN LP STRINGTYPE LSB RSB identifier RP LCB statementList RCB RCB {
-  $$ = new Node("Mainclass", "", yylineno);
-  $$->children.push_back($3);
+  $$ = new Node("Mainclass", $3->value, yylineno);
   $$->children.push_back($13);
   $$->children.push_back($16);
 }
@@ -121,15 +120,10 @@ param: type identifier {
   $$->children.push_back($2);
 }
 
-
 type: TYPEINT LSB RSB {$$ = new Node("type", "array", yylineno);}
   | BOOLEAN { $$ = new Node("type", "boolean", yylineno);}
   | TYPEINT { $$ = new Node("type", "int", yylineno);}
   | identifier {$$ = new Node("type", $1->value , yylineno);}
-
-ifStatement:
-
-elseStatement:
 
 statement: LCB RCB {$$ = new Node("empty", "", yylineno);}
   | LCB statementList RCB
@@ -212,19 +206,20 @@ expression: expression AND expression {
   }
   | expression LSB expression RSB
   | expression DOT LENGTH
-  | expression DOT identifier LP expressionList RP {
-    $$ = new Node("method call", " ", yylineno);
+| expression DOT identifier LP expressionList RP {
+    $$ = new Node("MethodInvocation", "", yylineno);
     $$->children.push_back($1);
     $$->children.push_back($3);
-    $$->children.push_back($5);}
+    $$->children.push_back($5);
+    }
   | INT {$$ = new Node("Int", $1, yylineno);}
-  | TRUE 
-  | FALSE
+  | TRUE {$$ = new Node("True", "", yylineno);}
+  | FALSE {$$ = new Node("False", "", yylineno);}
   | identifier {$$ = $1;}
   | THIS {$$ = new Node("this","", yylineno);}
   | NEW TYPEINT LSB expression RSB
   | NEW identifier LP RP {
-    $$ = new Node("method expression", "", yylineno);
+    $$ = new Node("ClassInstanceCreation", $2->value, yylineno);
     $$->children.push_back($2);}
   | NOT expression
   | LP expression RP {
@@ -232,10 +227,18 @@ expression: expression AND expression {
     }
 
 
-expressionList: expression;
-  | expressionList COMMA expression;
-  | %empty
-
+expressionList: expression {
+    $$ = new Node("Expressions", "", yylineno);
+    $$->children.push_back($1);
+  }
+  | expressionList COMMA expression {
+    $$ = $1;
+    $$->children.push_back($3);
+  }
+  | %empty {
+    $$ = new Node("Expressions", "", yylineno);
+  }
+;
 
 identifier: IDENTIFIER {$$ = new Node("identifier", $1, yylineno);};
 

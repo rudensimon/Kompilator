@@ -1,38 +1,30 @@
-public class SemanticMethodCallInBooleanExpression {
+public class DanglingElse {
     public static void main(String[] a) {
-        System.out.println(new A().a2());
+        System.out.println(new AST().TestIfElse());
     }
 }
 
-class A {
-    boolean b;
+class AST {
 
-    public A a1(int num) {
-        int num_aux;
-        if (this.a3())
-            num_aux = 1;
-        else if (this.a2() < 1)
-            num_aux = num * (this.a2());
-        else
-            num_aux = 0;
-        return this;
-    }
+    public int TestIfElse() {
+        boolean A;
+        boolean B;
+        A = false;
+        B = true;
+        // The following if-statements should generate the same tree.
+        if (A)
+            if (B)
+                B = true;
+            else
+                B = false;
 
-    public int a2() {
-        b = this.a1(this.a1(2).a4()).a3();
-        int ret;
-        if (b)
-            ret = 1;
-        else
-            ret = 0;
-        return ret;
-    }
+        if (A) {
+            if (B)
+                B = true;
+            else
+                A = false;
+        }
 
-    public boolean a3() {
-        return true;
-    }
-
-    public int a4() {
         return 1;
     }
 
