@@ -22,6 +22,6 @@ class Arr {
         }
 
         // also touches the LENGTH token
-        return sum + arr.length;   // expression . LENGTH
+        return arr.length;   // expression . LENGTH
     }
 }

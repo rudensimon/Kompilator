@@ -24,11 +24,17 @@
 %token END 0 "end of file"
 
 //definition of operator precedence. See https://www.gnu.org/software/bison/manual/bison.html#Precedence-Decl
+%left ASSIGNOP
+%left OR
+%left AND
+%left EQUAL
+%left LESS GREATER
 %left PLUSOP MINUSOP
-%left MULTOP
-
+%left MULTOP DIVOP
+%left NOT
+%left LP RP
 // definition of the production rules. All production rules are of type Node
-%type <Node *> root goal mainClass classDeclaration varDeclaration methodBody varDeclarationList classDeclarationList methodParamList param type statement statementList expression expressionListOpt expressionList identifier methodDeclaration methodDeclarationList ifStatement elseStatement
+%type <Node *> root goal mainClass classDeclaration varDeclaration methodBody varDeclarationList classDeclarationList methodParamList param type statement statementList expression expressionList identifier methodDeclaration methodDeclarationList
 
 %%
 root: goal;
@@ -83,26 +89,29 @@ methodDeclaration: PUBLIC type identifier LP methodParamList RP LCB methodBody R
 {
   $$ = new Node("method ", $3->value , yylineno);
   $$->children.push_back($2);
-  $$->children.push_back($5);
+  if ($5) $$->children.push_back($5);
   $$->children.push_back($8);
+  $$->children.push_back($10);
 }
 
-methodDeclarationList: methodDeclarationList methodDeclaration {
-  $$ = new Node("method Declaration", "", yylineno);
+methodDeclarationList: %empty {$$ = new Node("method Declaration", "", yylineno);}
+  | methodDeclarationList methodDeclaration {
+  $$ = $1;
   $$->children.push_back($2);
   }
-  | %empty
 
-methodBody: methodBody varDeclaration {
+
+methodBody: %empty {$$ = new Node("method body","", yylineno);}
+  | methodBody varDeclaration {
   $$ = $1;
   $$->children.push_back($2); 
   }
   | methodBody statement{
-    $$ = $1;
-    $$->children.push_back($2);
+  $$ = $1;
+  $$->children.push_back($2);
     
-    }
-  | %empty {$$ = new Node("method body","", yylineno);}
+  }
+
 
   methodParamList: param {
     $$ = new Node("params", "", yylineno);
@@ -126,7 +135,7 @@ type: TYPEINT LSB RSB {$$ = new Node("type", "array", yylineno);}
   | identifier {$$ = new Node("type", $1->value , yylineno);}
 
 statement: LCB RCB {$$ = new Node("empty", "", yylineno);}
-  | LCB statementList RCB
+  | LCB statementList RCB {$$=$2;}
   | IF LP expression RP statement {
     $$ = new Node("if statement", "", yylineno);
   }
@@ -136,7 +145,11 @@ statement: LCB RCB {$$ = new Node("empty", "", yylineno);}
     $$->children.push_back($5);
     $$->children.push_back($7);
     }
-  | WHILE LP expression RP statement
+  | WHILE LP expression RP statement {
+    $$ = new Node("While loop", "", yylineno);
+    $$->children.push_back($3);
+    $$->children.push_back($5); 
+  }
   | PRINTLN LP expression RP SEMI {
     $$ = new Node("print", "", yylineno);
     $$->children.push_back($3);
@@ -146,7 +159,12 @@ statement: LCB RCB {$$ = new Node("empty", "", yylineno);}
     $$->children.push_back($1);
     $$->children.push_back($3);
   }
-  | identifier LSB expression RSB ASSIGNOP expression SEMI
+  | identifier LSB expression RSB ASSIGNOP expression SEMI {
+    $$ = new Node("array assign", "", yylineno);
+    $$->children.push_back($1);
+    $$->children.push_back($3);
+    $$->children.push_back($6);
+  }
 
 statementList: statement{
       $$ = new Node("statement","", yylineno);  
@@ -204,9 +222,16 @@ expression: expression AND expression {
     $$->children.push_back($1);
     $$->children.push_back($3);
   }
-  | expression LSB expression RSB
-  | expression DOT LENGTH
-| expression DOT identifier LP expressionList RP {
+  | expression LSB expression RSB {
+    $$ = new Node("index expression", "", yylineno);
+    $$->children.push_back($1);
+    $$->children.push_back($3);
+  }
+  | expression DOT LENGTH {
+    $$ = new Node("length expression", "", yylineno);
+    $$->children.push_back($1);
+  }
+  | expression DOT identifier LP expressionList RP {
     $$ = new Node("MethodInvocation", "", yylineno);
     $$->children.push_back($1);
     $$->children.push_back($3);
@@ -217,11 +242,16 @@ expression: expression AND expression {
   | FALSE {$$ = new Node("False", "", yylineno);}
   | identifier {$$ = $1;}
   | THIS {$$ = new Node("this","", yylineno);}
-  | NEW TYPEINT LSB expression RSB
+  | NEW TYPEINT LSB expression RSB {
+    $$ = new Node("new array expression", "", yylineno);
+    $$->children.push_back($4);
+  }
   | NEW identifier LP RP {
-    $$ = new Node("ClassInstanceCreation", $2->value, yylineno);
-    $$->children.push_back($2);}
-  | NOT expression
+    $$ = new Node("ClassInstanceCreation", $2->value, yylineno);}
+  | NOT expression {
+    $$ = new Node("not expression", "", yylineno);
+    $$->children.push_back($2);
+  }
   | LP expression RP {
     $$ = $2;
     }
