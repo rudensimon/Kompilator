@@ -10,7 +10,6 @@
 "+"                     {if(USE_LEX_ONLY) {printf("PLUSOP ");} else {return yy::parser::make_PLUSOP(yytext);}}
 "-"                     {if(USE_LEX_ONLY) {printf("MINUSOP ");} else {return yy::parser::make_MINUSOP(yytext);}}
 "*"                     {if(USE_LEX_ONLY) {printf("MULTOP ");} else {return yy::parser::make_MULTOP(yytext);}}
-"/"                     {if(USE_LEX_ONLY) {printf("DIVOP ");} else {return yy::parser::make_DIVOP(yytext);}}
 "="                     {if(USE_LEX_ONLY) {printf("ASSIGNOP ");} else {return yy::parser::make_ASSIGNOP(yytext);}}
 "<"                     {if(USE_LEX_ONLY) {printf("LESS ");} else {return yy::parser::make_LESS(yytext);}}
 ">"                     {if(USE_LEX_ONLY) {printf("GREATER ");} else {return yy::parser::make_GREATER(yytext);}}

@@ -6,6 +6,18 @@ public class OperatorPriority {
 
 class OP {
 
+    public int arithmetic() {
+        int b;
+        b = 4;
+        int c;
+        c = 8;
+        int ret;
+        // the following statements should generate the same tree
+        ret = 1 + 18 * 3 - b + c * 9;
+        ret = 1 + (18 * 3) - b + (c * 9);
+        return ret;
+    }
+
     public boolean relational() {
         int a;
         int b;
