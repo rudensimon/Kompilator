@@ -37,97 +37,160 @@
 %left LP RP
 
 // definition of the production rules. All production rules are of type Node
-%type <Node *> root goal mainClass classDeclaration varDeclaration type statement expression identifier methodDeclaration classDeclarations statements varDeclarations methodDeclarations moreParams methodItem methodContent moreArgs paramsOpt elseOpt
-
+%type <Node *> root goal mainClass classDeclaration varDeclaration type statement expression identifier methodDeclaration classDeclarations statements varDeclarations methodDeclarations moreParams methodItem methodContent moreArgs paramsOpt elseOpt argsOpt
 %%
 root: goal;
 
-//Base grammar
-goal: mainClass classDeclarations END
-mainClass: PUBLIC CLASS identifier LCB PUBLIC STATIC VOID MAIN LP STRINGTYPE LSB RSB identifier RP LCB statement statements RCB RCB
-classDeclaration: CLASS identifier LCB varDeclarations methodDeclarations RCB
-varDeclaration: type identifier SEMI
-methodDeclaration: PUBLIC type identifier LP paramsOpt RP LCB methodContent RETURN expression SEMI RCB
+//grammar rules
+goal: mainClass classDeclarations END {
+  $$ = new Node("Goal", "", yylineno);
+  $$->children.push_back($1);
+  $$->children.push_back($2);
+  root = $$;
+}
+mainClass: PUBLIC CLASS identifier LCB PUBLIC STATIC VOID MAIN LP STRINGTYPE LSB RSB identifier RP LCB statement statements RCB RCB {
+  $$ = new Node("mainClass","", yylineno);
+  $$->children.push_back($3);
+  $$->children.push_back($13);
+  $$->children.push_back($16);
+  $$->children.push_back($17);
+}
 
-type: TYPEINT LSB RSB
-  | BOOLEAN
-  | TYPEINT
-  | identifier
+classDeclaration: CLASS identifier LCB varDeclarations methodDeclarations RCB {
+  $$ = new Node("class declaration", "", yylineno);
+  $$->children.push_back($2);
+  if ($4) $$->children.push_back($4);
+  if ($5) $$->children.push_back($5);
+}
 
-statement: LCB statements RCB
-  | IF LP expression RP statement elseOpt
-  | WHILE LP expression RP statement
-  | PRINTLN LP expression RP SEMI 
-  | identifier ASSIGNOP expression SEMI
-  | identifier LSB expression RSB ASSIGNOP expression SEMI
+varDeclaration: type identifier SEMI {
+  $$ = new Node("varDeclaration", "", yylineno);
+  $$->children.push_back($1);
+  $$->children.push_back($2);
+}
 
-expression: expression AND expression
-  | expression OR expression
-  | expression LESS expression
-  | expression GREATER expression
-  | expression EQUAL expression
-  | expression PLUSOP expression 
-  | expression MINUSOP expression
-  | expression MULTOP expression
-  | expression LSB expression RSB
-  | expression DOT LENGTH
-  | expression DOT identifier LP argsOpt RP {}
+methodDeclaration: PUBLIC type identifier LP paramsOpt RP LCB methodContent RETURN expression SEMI RCB {
+  $$ = new Node("methodDeclaration", "", yylineno);
+  $$->children.push_back($2);
+  $$->children.push_back($3);
+  if ($5) $$->children.push_back($5);
+  $$->children.push_back($8);
+  $$->children.push_back($10);
+}
+
+type: TYPEINT LSB RSB {$$=new Node("type Array","", yylineno);}
+  | BOOLEAN {$$=new Node("type Boolean","", yylineno);}
+  | TYPEINT {$$=new Node("type Int","", yylineno);}
+  | identifier {$$=$1;}
+
+statement: LCB statements RCB {$$ = new Node("statement block", "", yylineno); $$->children.push_back($2);}
+  | IF LP expression RP statement elseOpt {
+    $$ = new Node("if statement","", yylineno);
+    $$->children.push_back($3);
+    $$->children.push_back($5);
+    if ($6) $$->children.push_back($6);
+    }
+  | WHILE LP expression RP statement {$$ = new Node("while", "", yylineno); $$->children.push_back($3); $$->children.push_back($5);}
+  | PRINTLN LP expression RP SEMI { 
+    $$=new Node("statement print", "", yylineno); 
+    $$->children.push_back($3);
+    }
+  | identifier ASSIGNOP expression SEMI {
+    $$ = new Node("assign statement", "", yylineno); 
+    $$->children.push_back($1);
+    $$->children.push_back($3);
+    }
+  | identifier LSB expression RSB ASSIGNOP expression SEMI {
+    $$ = new Node("array assign", "", yylineno);
+    $$->children.push_back($1);
+    $$->children.push_back($3);
+    $$->children.push_back($6);
+    }
+
+expression: expression AND expression {$$ = new Node("And","", yylineno); $$->children.push_back($1); $$->children.push_back($3);}
+  | expression OR expression {$$ = new Node("Or","", yylineno); $$->children.push_back($1); $$->children.push_back($3);}
+  | expression LESS expression {$$ = new Node("Less","", yylineno); $$->children.push_back($1); $$->children.push_back($3);}
+  | expression GREATER expression {$$ = new Node("Greater","", yylineno); $$->children.push_back($1); $$->children.push_back($3);}
+  | expression EQUAL expression {$$ = new Node("Equal","", yylineno); $$->children.push_back($1); $$->children.push_back($3);}
+  | expression PLUSOP expression {$$ = new Node("Plus","", yylineno); $$->children.push_back($1); $$->children.push_back($3);}
+  | expression MINUSOP expression {$$ = new Node("Minus","", yylineno); $$->children.push_back($1); $$->children.push_back($3);}
+  | expression MULTOP expression {$$ = new Node("Mult","", yylineno); $$->children.push_back($1); $$->children.push_back($3);}
+  | expression LSB expression RSB {$$ = new Node("Array access", "", yylineno); $$->children.push_back($1); $$->children.push_back($3);}
+  | expression DOT LENGTH {$$ = new Node(".length","", yylineno); $$->children.push_back($1);}
+  | expression DOT identifier LP argsOpt RP {
+    $$ = new Node("methodCall", "", yylineno);
+    $$->children.push_back($1);
+    $$->children.push_back($3);
+    if ($5) $$->children.push_back($5);
+  }
   | INT {$$ = new Node("Int", $1, yylineno);}
   | TRUE {$$ = new Node("True", "", yylineno);}
   | FALSE {$$ = new Node("False", "", yylineno);}
-  | identifier
-  | THIS
-  | NEW TYPEINT LSB expression RSB
-  | NEW identifier LP RP
-  | NOT expression
-  | LP expression RP
+  | identifier {$$ = $1;}
+  | THIS {$$ = new Node("this","",yylineno);}
+  | NEW TYPEINT LSB expression RSB {$$ = new Node("array create", "", yylineno); $$->children.push_back($4);}
+  | NEW identifier LP RP {
+    $$ = new Node("expression NewObject","",yylineno);
+    $$->children.push_back($2);
+  }
+  | NOT expression {$$ = new Node("Not", "", yylineno); $$->children.push_back($2);}
+  | LP expression RP {$$ = new Node("grouped expression", "", yylineno); $$->children.push_back($2);}
 
 identifier: IDENTIFIER {$$ = new Node("identifier", $1, yylineno);};
 
 // * rules (zero or more)
 
 //(ClassDeclaration)*
-classDeclarations: %empty
-| classDeclarations classDeclaration
+classDeclarations: %empty {$$ = new Node("ClassDeclarations", "", yylineno);}
+| classDeclarations classDeclaration {$$ = $1; $$->children.push_back($2);}
 
 //(Statement)*
-statements: %empty
-| statements statement
+statements: %empty {$$ = new Node("statements", "", yylineno);}
+| statements statement {$$ = $1; $$->children.push_back($2);}
 
 //(VarDeclaration)*
-varDeclarations: %empty
-| varDeclarations varDeclaration
+varDeclarations: %empty {$$ = new Node("varDeclarations", "", yylineno);}
+| varDeclarations varDeclaration {$$ = $1; $$->children.push_back($2);}
 
 //(MethodDeclaration*)
-methodDeclarations: %empty
-| methodDeclarations methodDeclaration
+methodDeclarations: %empty {$$ = new Node("methodDeclarations", "", yylineno);}
+| methodDeclarations methodDeclaration {$$ = $1; $$->children.push_back($2);}
 
 //("," Type Identifier)*
-moreParams: %empty
-| moreParams COMMA type identifier
+moreParams: %empty {$$ = new Node("moreParams", "", yylineno);}
+| moreParams COMMA type identifier {$$=$1; $$->children.push_back($3); $$->children.push_back($4);}
 
 // (VarDeclaration | Statement)
-methodItem: varDeclaration
-| statement
+methodItem: varDeclaration {$$ = new Node("methodItem", "", yylineno); $$->children.push_back($1);}
+| statement {$$ = new Node("methodItem", "", yylineno); $$->children.push_back($1);}
 
 //(VarDeclaration | Statement )*
-methodContent: %empty
-| methodContent methodItem
+methodContent: %empty {$$ = new Node("methodContent", "", yylineno);}
+| methodContent methodItem {$$ = $1; $$->children.push_back($2);}
 
 //("," Expression )*
-moreArgs: %empty
-| moreArgs COMMA expression
+moreArgs: %empty {$$ = new Node("moreArgs", "", yylineno);}
+| moreArgs COMMA expression {$$=$1; $$->children.push_back($3);}
 
 // ? rules (zero or one)
 
 //(Type Identifier("," Type Identifier )*)?
-paramsOpt: %empty
-| type identifier moreParams
+paramsOpt: %empty {$$ = nullptr;}
+| type identifier moreParams {
+  $$ = new Node("paramsOpt", "", yylineno);
+  $$->children.push_back($1);
+  $$->children.push_back($2);
+  $$->children.push_back($3);
+  }
 
 //("else" Statement)?
-elseOpt: %empty
-| ELSE statement
+elseOpt: %empty {$$ = nullptr;}
+| ELSE statement {$$ = new Node("else statement", "", yylineno); $$->children.push_back($2);}
 
 //( Expression( "," Expression )*)?
-argsOpt: %empty
-| expression moreArgs
+argsOpt: %empty {$$ = nullptr;}
+| expression moreArgs {
+  $$ = new Node("args opt", "", yylineno);
+  $$->children.push_back($1);
+  if ($2) $$->children.push_back($2);
+};
