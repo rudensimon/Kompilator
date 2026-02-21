@@ -1,5 +1,6 @@
 #include <iostream>
 #include "parser.tab.hh"
+#include "Symboltable.hh"
 
 extern Node *root;
 extern FILE *yyin;
@@ -43,6 +44,8 @@ int main(int argc, char **argv)
 		}
 	}
 	//
+	
+
 	if (USE_LEX_ONLY)
 		yylex();
 	else
@@ -68,6 +71,11 @@ int main(int argc, char **argv)
 			{
 				errCode = errCodes::AST_ERROR;
 			}
+			
+			symboltable symtab; //construct symboltable
+			symtab.traverse_tree()
+			
+
 		}
 	}
 
