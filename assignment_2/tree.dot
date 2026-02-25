@@ -1,0 +1,217 @@
+digraph {
+n0 [label="Goal:"];
+n1 [label="mainClass:"];
+n2 [label="identifier:A"];
+n1 -> n2
+n3 [label="identifier:a"];
+n1 -> n3
+n4 [label="statement print:"];
+n5 [label="methodCall:"];
+n6 [label="expression NewObject:"];
+n7 [label="identifier:Bar"];
+n6 -> n7
+n5 -> n6
+n8 [label="identifier:foo"];
+n5 -> n8
+n4 -> n5
+n1 -> n4
+n9 [label="statements:"];
+n1 -> n9
+n0 -> n1
+n10 [label="ClassDeclarations:"];
+n11 [label="class declaration:"];
+n12 [label="identifier:Bar"];
+n11 -> n12
+n13 [label="varDeclarations:"];
+n11 -> n13
+n14 [label="methodDeclarations:"];
+n15 [label="methodDeclaration:"];
+n16 [label="type Int:"];
+n15 -> n16
+n17 [label="identifier:foo"];
+n15 -> n17
+n18 [label="methodContent:"];
+n19 [label="methodItem:"];
+n20 [label="varDeclaration:"];
+n21 [label="type Int:"];
+n20 -> n21
+n22 [label="identifier:aux"];
+n20 -> n22
+n19 -> n20
+n18 -> n19
+n23 [label="methodItem:"];
+n24 [label="varDeclaration:"];
+n25 [label="type Boolean:"];
+n24 -> n25
+n26 [label="identifier:aux2"];
+n24 -> n26
+n23 -> n24
+n18 -> n23
+n27 [label="methodItem:"];
+n28 [label="assign statement:"];
+n29 [label="identifier:aux"];
+n28 -> n29
+n30 [label="Int:1"];
+n28 -> n30
+n27 -> n28
+n18 -> n27
+n31 [label="methodItem:"];
+n32 [label="assign statement:"];
+n33 [label="identifier:aux2"];
+n32 -> n33
+n34 [label="True:"];
+n32 -> n34
+n31 -> n32
+n18 -> n31
+n35 [label="methodItem:"];
+n36 [label="assign statement:"];
+n37 [label="identifier:aux"];
+n36 -> n37
+n38 [label="methodCall:"];
+n39 [label="this:"];
+n38 -> n39
+n40 [label="identifier:foo2"];
+n38 -> n40
+n41 [label="args opt:"];
+n42 [label="identifier:aux"];
+n41 -> n42
+n43 [label="moreArgs:"];
+n41 -> n43
+n38 -> n41
+n36 -> n38
+n35 -> n36
+n18 -> n35
+n44 [label="methodItem:"];
+n45 [label="assign statement:"];
+n46 [label="identifier:aux"];
+n45 -> n46
+n47 [label="methodCall:"];
+n48 [label="this:"];
+n47 -> n48
+n49 [label="identifier:foo3"];
+n47 -> n49
+n50 [label="args opt:"];
+n51 [label="Int:2"];
+n50 -> n51
+n52 [label="moreArgs:"];
+n53 [label="Int:5"];
+n52 -> n53
+n54 [label="identifier:aux2"];
+n52 -> n54
+n50 -> n52
+n47 -> n50
+n45 -> n47
+n44 -> n45
+n18 -> n44
+n15 -> n18
+n55 [label="identifier:aux"];
+n15 -> n55
+n14 -> n15
+n56 [label="methodDeclaration:"];
+n57 [label="type Int:"];
+n56 -> n57
+n58 [label="identifier:foo2"];
+n56 -> n58
+n59 [label="paramsOpt:"];
+n60 [label="type Int:"];
+n59 -> n60
+n61 [label="identifier:p1"];
+n59 -> n61
+n62 [label="moreParams:"];
+n59 -> n62
+n56 -> n59
+n63 [label="methodContent:"];
+n64 [label="methodItem:"];
+n65 [label="if statement:"];
+n66 [label="Less:"];
+n67 [label="identifier:p1"];
+n66 -> n67
+n68 [label="Int:2"];
+n66 -> n68
+n65 -> n66
+n69 [label="statement print:"];
+n70 [label="Int:10"];
+n69 -> n70
+n65 -> n69
+n71 [label="else statement:"];
+n72 [label="statement print:"];
+n73 [label="Int:0"];
+n72 -> n73
+n71 -> n72
+n65 -> n71
+n64 -> n65
+n63 -> n64
+n56 -> n63
+n74 [label="Int:1"];
+n56 -> n74
+n14 -> n56
+n75 [label="methodDeclaration:"];
+n76 [label="type Int:"];
+n75 -> n76
+n77 [label="identifier:foo3"];
+n75 -> n77
+n78 [label="paramsOpt:"];
+n79 [label="type Int:"];
+n78 -> n79
+n80 [label="identifier:p1"];
+n78 -> n80
+n81 [label="moreParams:"];
+n82 [label="type Int:"];
+n81 -> n82
+n83 [label="identifier:p2"];
+n81 -> n83
+n84 [label="type Boolean:"];
+n81 -> n84
+n85 [label="identifier:p3"];
+n81 -> n85
+n78 -> n81
+n75 -> n78
+n86 [label="methodContent:"];
+n87 [label="methodItem:"];
+n88 [label="if statement:"];
+n89 [label="identifier:p3"];
+n88 -> n89
+n90 [label="statement block:"];
+n91 [label="statements:"];
+n92 [label="statement print:"];
+n93 [label="Int:1"];
+n92 -> n93
+n91 -> n92
+n90 -> n91
+n88 -> n90
+n94 [label="else statement:"];
+n95 [label="statement block:"];
+n96 [label="statements:"];
+n97 [label="statement print:"];
+n98 [label="Int:0"];
+n97 -> n98
+n96 -> n97
+n95 -> n96
+n94 -> n95
+n88 -> n94
+n87 -> n88
+n86 -> n87
+n99 [label="methodItem:"];
+n100 [label="statement print:"];
+n101 [label="identifier:p1"];
+n100 -> n101
+n99 -> n100
+n86 -> n99
+n102 [label="methodItem:"];
+n103 [label="statement print:"];
+n104 [label="Minus:"];
+n105 [label="identifier:p2"];
+n104 -> n105
+n106 [label="identifier:p1"];
+n104 -> n106
+n103 -> n104
+n102 -> n103
+n86 -> n102
+n75 -> n86
+n107 [label="Int:4"];
+n75 -> n107
+n14 -> n75
+n11 -> n14
+n10 -> n11
+n0 -> n10
+}

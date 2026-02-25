@@ -4,6 +4,11 @@
 
 using namespace std;
 
+class record {
+
+};
+
+
 class symboltable
 {
 private:
@@ -11,7 +16,7 @@ private:
 public:
     symboltable(/* args */);
     ~symboltable();
-    void traverse_tree();
+    void traverse_tree(Node*);
 };
 
 symboltable::symboltable(/* args */) /*Construcor*/
@@ -20,8 +25,9 @@ symboltable::symboltable(/* args */) /*Construcor*/
 }
 
 
-void symboltable::traverse_tree() {
-
+void symboltable::traverse_tree(Node* ast_root) {
+    printf("print from symboltable!");
+    ast_root->print_tree();
 };
 
 

@@ -35,6 +35,7 @@ void yy::parser::error(std::string const &err)
 int main(int argc, char **argv)
 {
 	// Reads from file if a file name is passed as an argument. Otherwise, reads from stdin.
+	symboltable symtab; //construct symboltable
 	if (argc > 1)
 	{
 		if (!(yyin = fopen(argv[1], "r")))
@@ -60,21 +61,19 @@ int main(int argc, char **argv)
 		if (parseSuccess && !lexical_errors)
 		{
 			printf("\nThe compiler successfuly generated a syntax tree for the given input! \n");
+			symtab.traverse_tree(root);
 
 			printf("\nPrint Tree:  \n");
 			try
 			{
 				root->print_tree();
 				root->generate_tree();
+				
 			}
 			catch (...)
 			{
 				errCode = errCodes::AST_ERROR;
-			}
-			
-			symboltable symtab; //construct symboltable
-			symtab.traverse_tree()
-			
+			}			
 
 		}
 	}
