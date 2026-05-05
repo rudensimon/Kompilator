@@ -21,13 +21,14 @@ public:
 
 symboltable::symboltable(/* args */) /*Construcor*/
 {
-    printf("Hello!");
+    printf("constructor hello!!");
 }
 
 
 void symboltable::traverse_tree(Node* ast_root) {
-    printf("print from symboltable!");
+    printf("print from symboltable tree traversal!");
     ast_root->print_tree();
+    
 };
 
 
