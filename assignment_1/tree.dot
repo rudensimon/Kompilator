@@ -1,0 +1,1021 @@
+digraph {
+n0 [label="Goal:"];
+n1 [label="mainClass:"];
+n2 [label="identifier:BinarySearch"];
+n1 -> n2
+n3 [label="identifier:a"];
+n1 -> n3
+n4 [label="statement print:"];
+n5 [label="methodCall:"];
+n6 [label="expression NewObject:"];
+n7 [label="identifier:BS"];
+n6 -> n7
+n5 -> n6
+n8 [label="identifier:Start"];
+n5 -> n8
+n9 [label="args opt:"];
+n10 [label="Int:20"];
+n9 -> n10
+n11 [label="moreArgs:"];
+n9 -> n11
+n5 -> n9
+n4 -> n5
+n1 -> n4
+n12 [label="statements:"];
+n1 -> n12
+n0 -> n1
+n13 [label="ClassDeclarations:"];
+n14 [label="class declaration:"];
+n15 [label="identifier:BS"];
+n14 -> n15
+n16 [label="varDeclarations:"];
+n17 [label="varDeclaration:"];
+n18 [label="type Array:"];
+n17 -> n18
+n19 [label="identifier:number"];
+n17 -> n19
+n16 -> n17
+n20 [label="varDeclaration:"];
+n21 [label="type Int:"];
+n20 -> n21
+n22 [label="identifier:size"];
+n20 -> n22
+n16 -> n20
+n14 -> n16
+n23 [label="methodDeclarations:"];
+n24 [label="methodDeclaration:"];
+n25 [label="type Int:"];
+n24 -> n25
+n26 [label="identifier:Start"];
+n24 -> n26
+n27 [label="paramsOpt:"];
+n28 [label="type Int:"];
+n27 -> n28
+n29 [label="identifier:sz"];
+n27 -> n29
+n30 [label="moreParams:"];
+n27 -> n30
+n24 -> n27
+n31 [label="methodContent:"];
+n32 [label="methodItem:"];
+n33 [label="varDeclaration:"];
+n34 [label="type Int:"];
+n33 -> n34
+n35 [label="identifier:aux01"];
+n33 -> n35
+n32 -> n33
+n31 -> n32
+n36 [label="methodItem:"];
+n37 [label="assign statement:"];
+n38 [label="identifier:aux01"];
+n37 -> n38
+n39 [label="methodCall:"];
+n40 [label="this:"];
+n39 -> n40
+n41 [label="identifier:Init"];
+n39 -> n41
+n42 [label="args opt:"];
+n43 [label="identifier:sz"];
+n42 -> n43
+n44 [label="moreArgs:"];
+n42 -> n44
+n39 -> n42
+n37 -> n39
+n36 -> n37
+n31 -> n36
+n45 [label="methodItem:"];
+n46 [label="varDeclaration:"];
+n47 [label="type Int:"];
+n46 -> n47
+n48 [label="identifier:aux02"];
+n46 -> n48
+n45 -> n46
+n31 -> n45
+n49 [label="methodItem:"];
+n50 [label="assign statement:"];
+n51 [label="identifier:aux02"];
+n50 -> n51
+n52 [label="methodCall:"];
+n53 [label="this:"];
+n52 -> n53
+n54 [label="identifier:Print"];
+n52 -> n54
+n50 -> n52
+n49 -> n50
+n31 -> n49
+n55 [label="methodItem:"];
+n56 [label="if statement:"];
+n57 [label="methodCall:"];
+n58 [label="this:"];
+n57 -> n58
+n59 [label="identifier:Search"];
+n57 -> n59
+n60 [label="args opt:"];
+n61 [label="Int:8"];
+n60 -> n61
+n62 [label="moreArgs:"];
+n60 -> n62
+n57 -> n60
+n56 -> n57
+n63 [label="statement print:"];
+n64 [label="Int:1"];
+n63 -> n64
+n56 -> n63
+n65 [label="else statement:"];
+n66 [label="statement print:"];
+n67 [label="Int:0"];
+n66 -> n67
+n65 -> n66
+n56 -> n65
+n55 -> n56
+n31 -> n55
+n68 [label="methodItem:"];
+n69 [label="if statement:"];
+n70 [label="methodCall:"];
+n71 [label="this:"];
+n70 -> n71
+n72 [label="identifier:Search"];
+n70 -> n72
+n73 [label="args opt:"];
+n74 [label="Int:19"];
+n73 -> n74
+n75 [label="moreArgs:"];
+n73 -> n75
+n70 -> n73
+n69 -> n70
+n76 [label="statement print:"];
+n77 [label="Int:1"];
+n76 -> n77
+n69 -> n76
+n78 [label="else statement:"];
+n79 [label="statement print:"];
+n80 [label="Int:0"];
+n79 -> n80
+n78 -> n79
+n69 -> n78
+n68 -> n69
+n31 -> n68
+n81 [label="methodItem:"];
+n82 [label="if statement:"];
+n83 [label="methodCall:"];
+n84 [label="this:"];
+n83 -> n84
+n85 [label="identifier:Search"];
+n83 -> n85
+n86 [label="args opt:"];
+n87 [label="Int:20"];
+n86 -> n87
+n88 [label="moreArgs:"];
+n86 -> n88
+n83 -> n86
+n82 -> n83
+n89 [label="statement print:"];
+n90 [label="Int:1"];
+n89 -> n90
+n82 -> n89
+n91 [label="else statement:"];
+n92 [label="statement print:"];
+n93 [label="Int:0"];
+n92 -> n93
+n91 -> n92
+n82 -> n91
+n81 -> n82
+n31 -> n81
+n94 [label="methodItem:"];
+n95 [label="if statement:"];
+n96 [label="methodCall:"];
+n97 [label="this:"];
+n96 -> n97
+n98 [label="identifier:Search"];
+n96 -> n98
+n99 [label="args opt:"];
+n100 [label="Int:21"];
+n99 -> n100
+n101 [label="moreArgs:"];
+n99 -> n101
+n96 -> n99
+n95 -> n96
+n102 [label="statement print:"];
+n103 [label="Int:1"];
+n102 -> n103
+n95 -> n102
+n104 [label="else statement:"];
+n105 [label="statement print:"];
+n106 [label="Int:0"];
+n105 -> n106
+n104 -> n105
+n95 -> n104
+n94 -> n95
+n31 -> n94
+n107 [label="methodItem:"];
+n108 [label="if statement:"];
+n109 [label="methodCall:"];
+n110 [label="this:"];
+n109 -> n110
+n111 [label="identifier:Search"];
+n109 -> n111
+n112 [label="args opt:"];
+n113 [label="Int:37"];
+n112 -> n113
+n114 [label="moreArgs:"];
+n112 -> n114
+n109 -> n112
+n108 -> n109
+n115 [label="statement print:"];
+n116 [label="Int:1"];
+n115 -> n116
+n108 -> n115
+n117 [label="else statement:"];
+n118 [label="statement print:"];
+n119 [label="Int:0"];
+n118 -> n119
+n117 -> n118
+n108 -> n117
+n107 -> n108
+n31 -> n107
+n120 [label="methodItem:"];
+n121 [label="if statement:"];
+n122 [label="methodCall:"];
+n123 [label="this:"];
+n122 -> n123
+n124 [label="identifier:Search"];
+n122 -> n124
+n125 [label="args opt:"];
+n126 [label="Int:38"];
+n125 -> n126
+n127 [label="moreArgs:"];
+n125 -> n127
+n122 -> n125
+n121 -> n122
+n128 [label="statement print:"];
+n129 [label="Int:1"];
+n128 -> n129
+n121 -> n128
+n130 [label="else statement:"];
+n131 [label="statement print:"];
+n132 [label="Int:0"];
+n131 -> n132
+n130 -> n131
+n121 -> n130
+n120 -> n121
+n31 -> n120
+n133 [label="methodItem:"];
+n134 [label="if statement:"];
+n135 [label="methodCall:"];
+n136 [label="this:"];
+n135 -> n136
+n137 [label="identifier:Search"];
+n135 -> n137
+n138 [label="args opt:"];
+n139 [label="Int:39"];
+n138 -> n139
+n140 [label="moreArgs:"];
+n138 -> n140
+n135 -> n138
+n134 -> n135
+n141 [label="statement print:"];
+n142 [label="Int:1"];
+n141 -> n142
+n134 -> n141
+n143 [label="else statement:"];
+n144 [label="statement print:"];
+n145 [label="Int:0"];
+n144 -> n145
+n143 -> n144
+n134 -> n143
+n133 -> n134
+n31 -> n133
+n146 [label="methodItem:"];
+n147 [label="if statement:"];
+n148 [label="methodCall:"];
+n149 [label="this:"];
+n148 -> n149
+n150 [label="identifier:Search"];
+n148 -> n150
+n151 [label="args opt:"];
+n152 [label="Int:50"];
+n151 -> n152
+n153 [label="moreArgs:"];
+n151 -> n153
+n148 -> n151
+n147 -> n148
+n154 [label="statement print:"];
+n155 [label="Int:1"];
+n154 -> n155
+n147 -> n154
+n156 [label="else statement:"];
+n157 [label="statement print:"];
+n158 [label="Int:0"];
+n157 -> n158
+n156 -> n157
+n147 -> n156
+n146 -> n147
+n31 -> n146
+n24 -> n31
+n159 [label="Int:999"];
+n24 -> n159
+n23 -> n24
+n160 [label="methodDeclaration:"];
+n161 [label="type Boolean:"];
+n160 -> n161
+n162 [label="identifier:Search"];
+n160 -> n162
+n163 [label="paramsOpt:"];
+n164 [label="type Int:"];
+n163 -> n164
+n165 [label="identifier:num"];
+n163 -> n165
+n166 [label="moreParams:"];
+n163 -> n166
+n160 -> n163
+n167 [label="methodContent:"];
+n168 [label="methodItem:"];
+n169 [label="varDeclaration:"];
+n170 [label="type Boolean:"];
+n169 -> n170
+n171 [label="identifier:bs01"];
+n169 -> n171
+n168 -> n169
+n167 -> n168
+n172 [label="methodItem:"];
+n173 [label="assign statement:"];
+n174 [label="identifier:bs01"];
+n173 -> n174
+n175 [label="False:"];
+n173 -> n175
+n172 -> n173
+n167 -> n172
+n176 [label="methodItem:"];
+n177 [label="varDeclaration:"];
+n178 [label="type Int:"];
+n177 -> n178
+n179 [label="identifier:right"];
+n177 -> n179
+n176 -> n177
+n167 -> n176
+n180 [label="methodItem:"];
+n181 [label="assign statement:"];
+n182 [label="identifier:right"];
+n181 -> n182
+n183 [label=".length:"];
+n184 [label="identifier:number"];
+n183 -> n184
+n181 -> n183
+n180 -> n181
+n167 -> n180
+n185 [label="methodItem:"];
+n186 [label="assign statement:"];
+n187 [label="identifier:right"];
+n186 -> n187
+n188 [label="Minus:"];
+n189 [label="identifier:right"];
+n188 -> n189
+n190 [label="Int:1"];
+n188 -> n190
+n186 -> n188
+n185 -> n186
+n167 -> n185
+n191 [label="methodItem:"];
+n192 [label="varDeclaration:"];
+n193 [label="type Int:"];
+n192 -> n193
+n194 [label="identifier:left"];
+n192 -> n194
+n191 -> n192
+n167 -> n191
+n195 [label="methodItem:"];
+n196 [label="assign statement:"];
+n197 [label="identifier:left"];
+n196 -> n197
+n198 [label="Int:0"];
+n196 -> n198
+n195 -> n196
+n167 -> n195
+n199 [label="methodItem:"];
+n200 [label="varDeclaration:"];
+n201 [label="type Boolean:"];
+n200 -> n201
+n202 [label="identifier:var_cont"];
+n200 -> n202
+n199 -> n200
+n167 -> n199
+n203 [label="methodItem:"];
+n204 [label="assign statement:"];
+n205 [label="identifier:var_cont"];
+n204 -> n205
+n206 [label="True:"];
+n204 -> n206
+n203 -> n204
+n167 -> n203
+n207 [label="methodItem:"];
+n208 [label="varDeclaration:"];
+n209 [label="type Int:"];
+n208 -> n209
+n210 [label="identifier:medium"];
+n208 -> n210
+n207 -> n208
+n167 -> n207
+n211 [label="methodItem:"];
+n212 [label="varDeclaration:"];
+n213 [label="type Int:"];
+n212 -> n213
+n214 [label="identifier:aux01"];
+n212 -> n214
+n211 -> n212
+n167 -> n211
+n215 [label="methodItem:"];
+n216 [label="assign statement:"];
+n217 [label="identifier:aux01"];
+n216 -> n217
+n218 [label="Int:0"];
+n216 -> n218
+n215 -> n216
+n167 -> n215
+n219 [label="methodItem:"];
+n220 [label="while:"];
+n221 [label="identifier:var_cont"];
+n220 -> n221
+n222 [label="statement block:"];
+n223 [label="statements:"];
+n224 [label="assign statement:"];
+n225 [label="identifier:medium"];
+n224 -> n225
+n226 [label="Plus:"];
+n227 [label="identifier:left"];
+n226 -> n227
+n228 [label="identifier:right"];
+n226 -> n228
+n224 -> n226
+n223 -> n224
+n229 [label="assign statement:"];
+n230 [label="identifier:medium"];
+n229 -> n230
+n231 [label="methodCall:"];
+n232 [label="this:"];
+n231 -> n232
+n233 [label="identifier:Div"];
+n231 -> n233
+n234 [label="args opt:"];
+n235 [label="identifier:medium"];
+n234 -> n235
+n236 [label="moreArgs:"];
+n234 -> n236
+n231 -> n234
+n229 -> n231
+n223 -> n229
+n237 [label="assign statement:"];
+n238 [label="identifier:aux01"];
+n237 -> n238
+n239 [label="Array access:"];
+n240 [label="identifier:number"];
+n239 -> n240
+n241 [label="identifier:medium"];
+n239 -> n241
+n237 -> n239
+n223 -> n237
+n242 [label="if statement:"];
+n243 [label="Less:"];
+n244 [label="identifier:num"];
+n243 -> n244
+n245 [label="identifier:aux01"];
+n243 -> n245
+n242 -> n243
+n246 [label="assign statement:"];
+n247 [label="identifier:right"];
+n246 -> n247
+n248 [label="Minus:"];
+n249 [label="identifier:medium"];
+n248 -> n249
+n250 [label="Int:1"];
+n248 -> n250
+n246 -> n248
+n242 -> n246
+n251 [label="else statement:"];
+n252 [label="assign statement:"];
+n253 [label="identifier:left"];
+n252 -> n253
+n254 [label="Plus:"];
+n255 [label="identifier:medium"];
+n254 -> n255
+n256 [label="Int:1"];
+n254 -> n256
+n252 -> n254
+n251 -> n252
+n242 -> n251
+n223 -> n242
+n257 [label="if statement:"];
+n258 [label="methodCall:"];
+n259 [label="this:"];
+n258 -> n259
+n260 [label="identifier:Compare"];
+n258 -> n260
+n261 [label="args opt:"];
+n262 [label="identifier:aux01"];
+n261 -> n262
+n263 [label="moreArgs:"];
+n264 [label="identifier:num"];
+n263 -> n264
+n261 -> n263
+n258 -> n261
+n257 -> n258
+n265 [label="assign statement:"];
+n266 [label="identifier:var_cont"];
+n265 -> n266
+n267 [label="False:"];
+n265 -> n267
+n257 -> n265
+n268 [label="else statement:"];
+n269 [label="assign statement:"];
+n270 [label="identifier:var_cont"];
+n269 -> n270
+n271 [label="True:"];
+n269 -> n271
+n268 -> n269
+n257 -> n268
+n223 -> n257
+n272 [label="if statement:"];
+n273 [label="Less:"];
+n274 [label="identifier:right"];
+n273 -> n274
+n275 [label="identifier:left"];
+n273 -> n275
+n272 -> n273
+n276 [label="assign statement:"];
+n277 [label="identifier:var_cont"];
+n276 -> n277
+n278 [label="False:"];
+n276 -> n278
+n272 -> n276
+n223 -> n272
+n222 -> n223
+n220 -> n222
+n219 -> n220
+n167 -> n219
+n279 [label="methodItem:"];
+n280 [label="if statement:"];
+n281 [label="methodCall:"];
+n282 [label="this:"];
+n281 -> n282
+n283 [label="identifier:Compare"];
+n281 -> n283
+n284 [label="args opt:"];
+n285 [label="identifier:aux01"];
+n284 -> n285
+n286 [label="moreArgs:"];
+n287 [label="identifier:num"];
+n286 -> n287
+n284 -> n286
+n281 -> n284
+n280 -> n281
+n288 [label="assign statement:"];
+n289 [label="identifier:bs01"];
+n288 -> n289
+n290 [label="True:"];
+n288 -> n290
+n280 -> n288
+n291 [label="else statement:"];
+n292 [label="assign statement:"];
+n293 [label="identifier:bs01"];
+n292 -> n293
+n294 [label="False:"];
+n292 -> n294
+n291 -> n292
+n280 -> n291
+n279 -> n280
+n167 -> n279
+n160 -> n167
+n295 [label="identifier:bs01"];
+n160 -> n295
+n23 -> n160
+n296 [label="methodDeclaration:"];
+n297 [label="type Int:"];
+n296 -> n297
+n298 [label="identifier:Div"];
+n296 -> n298
+n299 [label="paramsOpt:"];
+n300 [label="type Int:"];
+n299 -> n300
+n301 [label="identifier:num"];
+n299 -> n301
+n302 [label="moreParams:"];
+n299 -> n302
+n296 -> n299
+n303 [label="methodContent:"];
+n304 [label="methodItem:"];
+n305 [label="varDeclaration:"];
+n306 [label="type Int:"];
+n305 -> n306
+n307 [label="identifier:count01"];
+n305 -> n307
+n304 -> n305
+n303 -> n304
+n308 [label="methodItem:"];
+n309 [label="assign statement:"];
+n310 [label="identifier:count01"];
+n309 -> n310
+n311 [label="Int:0"];
+n309 -> n311
+n308 -> n309
+n303 -> n308
+n312 [label="methodItem:"];
+n313 [label="varDeclaration:"];
+n314 [label="type Int:"];
+n313 -> n314
+n315 [label="identifier:count02"];
+n313 -> n315
+n312 -> n313
+n303 -> n312
+n316 [label="methodItem:"];
+n317 [label="assign statement:"];
+n318 [label="identifier:count02"];
+n317 -> n318
+n319 [label="Int:0"];
+n317 -> n319
+n316 -> n317
+n303 -> n316
+n320 [label="methodItem:"];
+n321 [label="varDeclaration:"];
+n322 [label="type Int:"];
+n321 -> n322
+n323 [label="identifier:aux03"];
+n321 -> n323
+n320 -> n321
+n303 -> n320
+n324 [label="methodItem:"];
+n325 [label="assign statement:"];
+n326 [label="identifier:aux03"];
+n325 -> n326
+n327 [label="Minus:"];
+n328 [label="identifier:num"];
+n327 -> n328
+n329 [label="Int:1"];
+n327 -> n329
+n325 -> n327
+n324 -> n325
+n303 -> n324
+n330 [label="methodItem:"];
+n331 [label="while:"];
+n332 [label="Less:"];
+n333 [label="identifier:count02"];
+n332 -> n333
+n334 [label="identifier:aux03"];
+n332 -> n334
+n331 -> n332
+n335 [label="statement block:"];
+n336 [label="statements:"];
+n337 [label="assign statement:"];
+n338 [label="identifier:count01"];
+n337 -> n338
+n339 [label="Plus:"];
+n340 [label="identifier:count01"];
+n339 -> n340
+n341 [label="Int:1"];
+n339 -> n341
+n337 -> n339
+n336 -> n337
+n342 [label="assign statement:"];
+n343 [label="identifier:count02"];
+n342 -> n343
+n344 [label="Plus:"];
+n345 [label="identifier:count02"];
+n344 -> n345
+n346 [label="Int:2"];
+n344 -> n346
+n342 -> n344
+n336 -> n342
+n335 -> n336
+n331 -> n335
+n330 -> n331
+n303 -> n330
+n296 -> n303
+n347 [label="identifier:count01"];
+n296 -> n347
+n23 -> n296
+n348 [label="methodDeclaration:"];
+n349 [label="type Boolean:"];
+n348 -> n349
+n350 [label="identifier:Compare"];
+n348 -> n350
+n351 [label="paramsOpt:"];
+n352 [label="type Int:"];
+n351 -> n352
+n353 [label="identifier:num1"];
+n351 -> n353
+n354 [label="moreParams:"];
+n355 [label="type Int:"];
+n354 -> n355
+n356 [label="identifier:num2"];
+n354 -> n356
+n351 -> n354
+n348 -> n351
+n357 [label="methodContent:"];
+n358 [label="methodItem:"];
+n359 [label="varDeclaration:"];
+n360 [label="type Boolean:"];
+n359 -> n360
+n361 [label="identifier:retval"];
+n359 -> n361
+n358 -> n359
+n357 -> n358
+n362 [label="methodItem:"];
+n363 [label="assign statement:"];
+n364 [label="identifier:retval"];
+n363 -> n364
+n365 [label="False:"];
+n363 -> n365
+n362 -> n363
+n357 -> n362
+n366 [label="methodItem:"];
+n367 [label="varDeclaration:"];
+n368 [label="type Int:"];
+n367 -> n368
+n369 [label="identifier:aux02"];
+n367 -> n369
+n366 -> n367
+n357 -> n366
+n370 [label="methodItem:"];
+n371 [label="assign statement:"];
+n372 [label="identifier:aux02"];
+n371 -> n372
+n373 [label="Plus:"];
+n374 [label="identifier:num2"];
+n373 -> n374
+n375 [label="Int:1"];
+n373 -> n375
+n371 -> n373
+n370 -> n371
+n357 -> n370
+n376 [label="methodItem:"];
+n377 [label="if statement:"];
+n378 [label="Less:"];
+n379 [label="identifier:num1"];
+n378 -> n379
+n380 [label="identifier:num2"];
+n378 -> n380
+n377 -> n378
+n381 [label="assign statement:"];
+n382 [label="identifier:retval"];
+n381 -> n382
+n383 [label="False:"];
+n381 -> n383
+n377 -> n381
+n384 [label="else statement:"];
+n385 [label="if statement:"];
+n386 [label="Not:"];
+n387 [label="grouped expression:"];
+n388 [label="Less:"];
+n389 [label="identifier:num1"];
+n388 -> n389
+n390 [label="identifier:aux02"];
+n388 -> n390
+n387 -> n388
+n386 -> n387
+n385 -> n386
+n391 [label="assign statement:"];
+n392 [label="identifier:retval"];
+n391 -> n392
+n393 [label="False:"];
+n391 -> n393
+n385 -> n391
+n394 [label="else statement:"];
+n395 [label="assign statement:"];
+n396 [label="identifier:retval"];
+n395 -> n396
+n397 [label="True:"];
+n395 -> n397
+n394 -> n395
+n385 -> n394
+n384 -> n385
+n377 -> n384
+n376 -> n377
+n357 -> n376
+n348 -> n357
+n398 [label="identifier:retval"];
+n348 -> n398
+n23 -> n348
+n399 [label="methodDeclaration:"];
+n400 [label="type Int:"];
+n399 -> n400
+n401 [label="identifier:Print"];
+n399 -> n401
+n402 [label="methodContent:"];
+n403 [label="methodItem:"];
+n404 [label="varDeclaration:"];
+n405 [label="type Int:"];
+n404 -> n405
+n406 [label="identifier:j"];
+n404 -> n406
+n403 -> n404
+n402 -> n403
+n407 [label="methodItem:"];
+n408 [label="assign statement:"];
+n409 [label="identifier:j"];
+n408 -> n409
+n410 [label="Int:1"];
+n408 -> n410
+n407 -> n408
+n402 -> n407
+n411 [label="methodItem:"];
+n412 [label="while:"];
+n413 [label="Less:"];
+n414 [label="identifier:j"];
+n413 -> n414
+n415 [label="grouped expression:"];
+n416 [label="identifier:size"];
+n415 -> n416
+n413 -> n415
+n412 -> n413
+n417 [label="statement block:"];
+n418 [label="statements:"];
+n419 [label="statement print:"];
+n420 [label="Array access:"];
+n421 [label="identifier:number"];
+n420 -> n421
+n422 [label="identifier:j"];
+n420 -> n422
+n419 -> n420
+n418 -> n419
+n423 [label="assign statement:"];
+n424 [label="identifier:j"];
+n423 -> n424
+n425 [label="Plus:"];
+n426 [label="identifier:j"];
+n425 -> n426
+n427 [label="Int:1"];
+n425 -> n427
+n423 -> n425
+n418 -> n423
+n417 -> n418
+n412 -> n417
+n411 -> n412
+n402 -> n411
+n428 [label="methodItem:"];
+n429 [label="statement print:"];
+n430 [label="Int:99999"];
+n429 -> n430
+n428 -> n429
+n402 -> n428
+n399 -> n402
+n431 [label="Int:0"];
+n399 -> n431
+n23 -> n399
+n432 [label="methodDeclaration:"];
+n433 [label="type Int:"];
+n432 -> n433
+n434 [label="identifier:Init"];
+n432 -> n434
+n435 [label="paramsOpt:"];
+n436 [label="type Int:"];
+n435 -> n436
+n437 [label="identifier:sz"];
+n435 -> n437
+n438 [label="moreParams:"];
+n435 -> n438
+n432 -> n435
+n439 [label="methodContent:"];
+n440 [label="methodItem:"];
+n441 [label="varDeclaration:"];
+n442 [label="type Int:"];
+n441 -> n442
+n443 [label="identifier:j"];
+n441 -> n443
+n440 -> n441
+n439 -> n440
+n444 [label="methodItem:"];
+n445 [label="assign statement:"];
+n446 [label="identifier:j"];
+n445 -> n446
+n447 [label="Int:1"];
+n445 -> n447
+n444 -> n445
+n439 -> n444
+n448 [label="methodItem:"];
+n449 [label="varDeclaration:"];
+n450 [label="type Int:"];
+n449 -> n450
+n451 [label="identifier:k"];
+n449 -> n451
+n448 -> n449
+n439 -> n448
+n452 [label="methodItem:"];
+n453 [label="varDeclaration:"];
+n454 [label="type Int:"];
+n453 -> n454
+n455 [label="identifier:aux02"];
+n453 -> n455
+n452 -> n453
+n439 -> n452
+n456 [label="methodItem:"];
+n457 [label="varDeclaration:"];
+n458 [label="type Int:"];
+n457 -> n458
+n459 [label="identifier:aux01"];
+n457 -> n459
+n456 -> n457
+n439 -> n456
+n460 [label="methodItem:"];
+n461 [label="assign statement:"];
+n462 [label="identifier:size"];
+n461 -> n462
+n463 [label="identifier:sz"];
+n461 -> n463
+n460 -> n461
+n439 -> n460
+n464 [label="methodItem:"];
+n465 [label="assign statement:"];
+n466 [label="identifier:number"];
+n465 -> n466
+n467 [label="array create:"];
+n468 [label="identifier:sz"];
+n467 -> n468
+n465 -> n467
+n464 -> n465
+n439 -> n464
+n469 [label="methodItem:"];
+n470 [label="assign statement:"];
+n471 [label="identifier:k"];
+n470 -> n471
+n472 [label="Plus:"];
+n473 [label="identifier:size"];
+n472 -> n473
+n474 [label="Int:1"];
+n472 -> n474
+n470 -> n472
+n469 -> n470
+n439 -> n469
+n475 [label="methodItem:"];
+n476 [label="while:"];
+n477 [label="Less:"];
+n478 [label="identifier:j"];
+n477 -> n478
+n479 [label="grouped expression:"];
+n480 [label="identifier:size"];
+n479 -> n480
+n477 -> n479
+n476 -> n477
+n481 [label="statement block:"];
+n482 [label="statements:"];
+n483 [label="assign statement:"];
+n484 [label="identifier:aux01"];
+n483 -> n484
+n485 [label="Mult:"];
+n486 [label="Int:2"];
+n485 -> n486
+n487 [label="identifier:j"];
+n485 -> n487
+n483 -> n485
+n482 -> n483
+n488 [label="assign statement:"];
+n489 [label="identifier:aux02"];
+n488 -> n489
+n490 [label="Minus:"];
+n491 [label="identifier:k"];
+n490 -> n491
+n492 [label="Int:3"];
+n490 -> n492
+n488 -> n490
+n482 -> n488
+n493 [label="array assign:"];
+n494 [label="identifier:number"];
+n493 -> n494
+n495 [label="identifier:j"];
+n493 -> n495
+n496 [label="Plus:"];
+n497 [label="identifier:aux01"];
+n496 -> n497
+n498 [label="identifier:aux02"];
+n496 -> n498
+n493 -> n496
+n482 -> n493
+n499 [label="assign statement:"];
+n500 [label="identifier:j"];
+n499 -> n500
+n501 [label="Plus:"];
+n502 [label="identifier:j"];
+n501 -> n502
+n503 [label="Int:1"];
+n501 -> n503
+n499 -> n501
+n482 -> n499
+n504 [label="assign statement:"];
+n505 [label="identifier:k"];
+n504 -> n505
+n506 [label="Minus:"];
+n507 [label="identifier:k"];
+n506 -> n507
+n508 [label="Int:1"];
+n506 -> n508
+n504 -> n506
+n482 -> n504
+n481 -> n482
+n476 -> n481
+n475 -> n476
+n439 -> n475
+n432 -> n439
+n509 [label="Int:0"];
+n432 -> n509
+n23 -> n432
+n14 -> n23
+n13 -> n14
+n0 -> n13
+}
