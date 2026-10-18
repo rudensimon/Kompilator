@@ -35,7 +35,7 @@ void yy::parser::error(std::string const &err)
 int main(int argc, char **argv)
 {
 	// Reads from file if a file name is passed as an argument. Otherwise, reads from stdin.
-	symboltable symtab; //construct symboltable
+	Symboltable symtab; //construct symboltable
 	if (argc > 1)
 	{
 		if (!(yyin = fopen(argv[1], "r")))
@@ -62,6 +62,15 @@ int main(int argc, char **argv)
 		{
 			printf("\nThe compiler successfuly generated a syntax tree for the given input! \n");
 			symtab.traverse_tree(root);
+			//symtab.print_current_scope();
+			//symtab.enter_scope("abc");
+			//symtab.print_current_scope();
+			//symtab.enter_scope("123");
+			//symtab.print_current_scope();
+			//symtab.exit_scope();
+			//symtab.print_current_scope();
+			//symtab.exit_scope();
+			//symtab.print_current_scope();
 
 			printf("\nPrint Tree:  \n");
 			try

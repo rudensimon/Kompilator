@@ -4,34 +4,70 @@
 
 using namespace std;
 
-class record {
+struct Record {
+    string identifier;
+    string type;
+};
 
+struct Scope {
+    Scope* parent = nullptr;
+    string name;
+
+    vector<Scope*> children;
+    vector<Record> records;
 };
 
 
-class symboltable
+
+class Symboltable
 {
 private:
-    /* data */
+    Scope* root = new Scope();
+    Scope* current;
+
 public:
-    symboltable(/* args */);
-    ~symboltable();
-    void traverse_tree(Node*);
-};
+    Symboltable() {
+        root->name = "Global";
+        current = root;
 
-symboltable::symboltable(/* args */) /*Construcor*/
-{
-    printf("constructor hello!!");
-}
-
-
-void symboltable::traverse_tree(Node* ast_root) {
-    printf("print from symboltable tree traversal!");
-    ast_root->print_tree();
+    };
     
+    ~Symboltable() {
+        printf("print from desctructor");
+    };
+
+    void traverse_tree(Node* root) {
+        cout << root->type << ":" << root->value << endl;
+
+        // Traverse all children recursively
+        for (auto i = root->children.begin(); i != root->children.end(); i++) {
+        traverse_tree(*i);
+        }
+    };
+    
+    void enter_scope(string name){
+
+        //Create new scope, set name, set parent, enter scope(set current)
+        printf("print from enter scope");
+        Scope* child = new Scope();
+        child->name = name;
+        child->parent = current;
+
+        current->children.push_back(child);
+
+        current = child;
+    };
+    
+    void exit_scope() {
+        printf("print from exit scope");
+        if (current->parent != nullptr) {
+            current = current->parent;
+        }
+    };
+
+    void print_current_scope() {
+         cout << "Current scope: " << current->name << endl;
+    }
 };
 
 
-symboltable::~symboltable()
-{
-}
