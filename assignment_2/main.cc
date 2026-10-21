@@ -62,15 +62,8 @@ int main(int argc, char **argv)
 		{
 			printf("\nThe compiler successfuly generated a syntax tree for the given input! \n");
 			symtab.traverse_tree(root);
-			//symtab.print_current_scope();
-			//symtab.enter_scope("abc");
-			//symtab.print_current_scope();
-			//symtab.enter_scope("123");
-			//symtab.print_current_scope();
-			//symtab.exit_scope();
-			//symtab.print_current_scope();
-			//symtab.exit_scope();
-			//symtab.print_current_scope();
+			symtab.print_sym_table();
+			
 
 			printf("\nPrint Tree:  \n");
 			try

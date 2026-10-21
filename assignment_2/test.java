@@ -7,7 +7,7 @@ public class Main {
 class A {
     int x;
 
-    public int foo(int y) {
+    public int foo(int y, int test, int test2) {
         int z;
         z = y;
         return z;
