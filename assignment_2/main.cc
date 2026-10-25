@@ -1,6 +1,7 @@
 #include <iostream>
 #include "parser.tab.hh"
 #include "Symboltable.hh"
+#include "Semantic.hh"
 
 extern Node *root;
 extern FILE *yyin;
@@ -35,7 +36,7 @@ void yy::parser::error(std::string const &err)
 int main(int argc, char **argv)
 {
 	// Reads from file if a file name is passed as an argument. Otherwise, reads from stdin.
-	Symboltable symtab; //construct symboltable
+	
 	if (argc > 1)
 	{
 		if (!(yyin = fopen(argv[1], "r")))
@@ -61,9 +62,7 @@ int main(int argc, char **argv)
 		if (parseSuccess && !lexical_errors)
 		{
 			printf("\nThe compiler successfuly generated a syntax tree for the given input! \n");
-			symtab.traverse_tree(root);
-			symtab.print_sym_table();
-			
+
 
 			printf("\nPrint Tree:  \n");
 			try
@@ -77,6 +76,24 @@ int main(int argc, char **argv)
 				errCode = errCodes::AST_ERROR;
 			}			
 
+
+			
+		}
+		Symboltable symtab;
+		symtab.traverse_tree(root);
+		symtab.print_sym_table();
+		
+		Semantic semantic;
+		symtab.reset();
+		semantic.check_duplicates(&symtab);
+		semantic.check_undeclared(root, &symtab);
+
+		if (semantic.errors) {
+			cerr << "semantic errors found!" << endl;
+			errCode = errCodes::SEMANTIC_ERROR;
+		}
+		else {
+			cout << "semantic analysis completed" << endl;
 		}
 	}
 

@@ -7,6 +7,7 @@ using namespace std;
 struct Record {
     string identifier;
     string type;
+    int linenr;
 
     virtual string get_record_type() {
         return("Record");
@@ -39,8 +40,6 @@ struct Scope {
     vector<Record*> records;
 };
 
-
-
 class Symboltable
 {
 private:
@@ -62,7 +61,6 @@ public:
         //cout << "visiting:" << root->type << ":" << root->value << endl;
 
         if (root->type == "mainClass") {
-            //do stuff
             auto i = root->children.begin();
 
             ClassRecord* classRecord = new ClassRecord();
@@ -99,12 +97,18 @@ public:
         }
 
         if (root->type == "methodDeclaration") {
-            //do stuff
             MethodRecord* record = new MethodRecord();
 
             auto i = root->children.begin();
+
+            if ((*i)->type == "identifier") {
+                record->type = (*i)->value;
+            }
+            else {
+                  record->type = (*i)->type;
+            }
             
-            record->type = (*i)->type;
+          
             i++;
             record->identifier = (*i)->value;
             
@@ -145,14 +149,25 @@ public:
         if (root->type == "varDeclaration") {
             //do stuff
             VariableRecord* record = new VariableRecord();
-            record->type = root->children.front()->type;
             record->identifier = root->children.back()->value;
+            record->linenr = root->lineno;
+            
+            // if custom type/object/class 
+            if (root->children.front()->type == "identifier") {
+                record->type = root->children.front()->value;
+            }
+            // Int/Boolean
+            else {
+                record->type = root->children.front()->type;
+            }
+           
+            
             put(record);
         }           
         
         // Traverse all children recursively
         for (auto i = root->children.begin(); i != root->children.end(); i++) {
-        traverse_tree(*i);
+            traverse_tree(*i);
         }
 
         //exit scopes
@@ -223,6 +238,9 @@ public:
 
     }
 
+    Scope* get_root() {
+        return root;
+    }
 
     void put(Record* record) {
         current->records.push_back(record);
@@ -232,6 +250,61 @@ public:
     void reset() {
         current = root;
     }
-};
 
+    void enter_existing_scope(string scopeName) {
+        for (int i = 0; i < current->children.size(); i++) {
+            if (current->children[i]->name == scopeName ) {
+                current = current->children[i];
+                return;
+            }
+            
+        }
+        cout << "scope does not exist: " << scopeName << endl;
+    }
+
+    Record* look_up(string identifier) {
+        //Looks up if a identifier/record exist in current scope or parent scope and returns the record
+        Scope* scope = current;
+
+        while(scope != nullptr) {
+            for (int i = 0; i < scope->records.size(); i++) {
+            if (scope->records[i]->identifier == identifier) {
+                return scope->records[i];
+            }
+        }
+
+            //Check if exist in parent scope
+            scope = scope->parent;
+        }
+
+        return nullptr; //Not found
+    }
+    
+    Record* method_look_up(string scopeName, string methodName)  {
+        Scope* scope = root; //start search from global scope
+        Scope* target;
+        for (int i = 0; i < scope->children.size(); i++) {
+                
+            //search for scope
+            if (scope->children[i]->name == scopeName) {
+                //search for method record
+                target = scope->children[i];
+
+                for (int j = 0; j < target->records.size(); j++) {
+                    if (target->records[j]->identifier == methodName && target->records[j]->get_record_type() == "MethodRecord") {
+                        return target->records[j];
+                    }
+                }
+            }
+        }
+        return nullptr;
+    }
+
+    string get_current_class() {
+        if (current != nullptr && current->parent != nullptr) {
+            return current->parent->name;
+        }
+        return "";
+        }
+};
 
