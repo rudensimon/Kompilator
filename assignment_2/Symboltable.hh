@@ -259,7 +259,7 @@ public:
             }
             
         }
-        cout << "scope does not exist: " << scopeName << endl;
+        //cout << "scope does not exist: " << scopeName << endl;
     }
 
     Record* look_up(string identifier) {

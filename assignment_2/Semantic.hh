@@ -57,12 +57,12 @@ public:
 
         if (root->type == "methodCall") {
             //cout << "method call: " <<  endl;
-            get_expression(root, symtab);
+            resolve_expression(root, symtab);
         }
 
         if (root->type == "expression NewObject") {
             //cout << "new object: " <<  endl;
-            get_expression(root, symtab);
+            resolve_expression(root, symtab);
         }
 
         if (root->type == "identifier") {
@@ -97,7 +97,7 @@ public:
         }
     }
 
-    string get_expression(Node* node, Symboltable* symtab) {
+    string resolve_expression(Node* node, Symboltable* symtab) {
         
         if (node->type == "this") {
 
@@ -141,7 +141,7 @@ public:
             string methodName = (*i)->value;
             
             //Find the type of the object
-            string scope = get_expression(object, symtab);
+            string scope = resolve_expression(object, symtab);
             
             //check arguments
             i++;
